@@ -60,7 +60,7 @@ function App() {
 
   return (
     <>
-      <h1>Give Feedback</h1>
+      <h1 className='flex justify-center'>Give Feedback</h1>
       <Button onClick={handleGoodClick} text='Good' />
       <Button onClick={handleNeutralClick} text='Neutral' />
       <Button onClick={handleBadClick} text='Bad' />
