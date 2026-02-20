@@ -1,33 +1,46 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+const Button = ({onClick, text}) => {
+  return (
+    <button onClick={onClick}>{text}</button>
+  )
+}
+
+const Statistics = ({title, value}) => {
+  return (
+    <p>{title} {value}</p>
+  )
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  // save clicks of each button to its own state
+  const [good, setGood] = useState(0)
+  const [neutral, setNeutral] = useState(0)
+  const [bad, setBad] = useState(0)
+
+  const handleGoodClick = () => {
+    setGood(good + 1);
+  }
+
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1);
+  }
+
+  const handleBadClick = () => {
+    setBad(bad + 1);
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Give Feedback</h1>
+      <Button onClick={handleGoodClick} text='Good' />
+      <Button onClick={handleNeutralClick} text='Neutral' />
+      <Button onClick={handleBadClick} text='Bad' />
+
+      <h2>Statistics</h2>
+      <Statistics title='good' value={good} />
+      <Statistics title='neutral' value={neutral} />
+      <Statistics title='bad' value={bad} />
     </>
   )
 }
